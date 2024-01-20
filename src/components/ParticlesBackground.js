@@ -17,9 +17,9 @@ const ParticlesBackground = () => {
         autoPlay: true,
         background: {
             color: {
-                value: "#0d47a1"
+                value: "#0a2239" // Dark blue background
             },
-            opacity: 0.5
+            opacity: 0.7
         },
         detectRetina: true,
         fpsLimit: 60,
@@ -39,21 +39,21 @@ const ParticlesBackground = () => {
                     quantity: 4
                 },
                 repulse: {
-                    distance: 100,
-                    duration: 0.4
+                    distance: 120,
+                    duration: 0.6
                 }
             }
         },
         particles: {
             color: {
-                value: "#ffffff"
+                value: ["#ffffff", "#00bcd4", "#ff9800"] // AI theme colors: white, blue, orange
             },
             links: {
-                color: "#ffffff",
+                color: "#00bcd4", // Link color as blue
                 distance: 150,
                 enable: true,
-                opacity: 0.4,
-                width: 1
+                opacity: 0.6,
+                width: 1.5
             },
             move: {
                 direction: "none",
@@ -61,8 +61,8 @@ const ParticlesBackground = () => {
                 outModes: {
                     default: "bounce"
                 },
-                random: false,
-                speed: 2,
+                random: true,
+                speed: 3,
                 straight: false
             },
             number: {
@@ -70,13 +70,13 @@ const ParticlesBackground = () => {
                     enable: true,
                     area: 800
                 },
-                value: 80
+                value: 100
             },
             opacity: {
-                value: 0.5
+                value: 0.6
             },
             shape: {
-                type: "circle"
+                type: ["circle", "triangle"] // Adding triangles to complement circles
             },
             size: {
                 value: { min: 1, max: 5 }
@@ -84,12 +84,13 @@ const ParticlesBackground = () => {
         },
         pauseOnBlur: true,
         pauseOnOutsideViewport: true,
-        zLayers: 2
+        zLayers: 3
     }), []);
 
     return (
-            init && <Particles id="tsparticles" options={options} />
-        );
-    };
+        init && <Particles id="tsparticles" options={options} />
+    );
+};
 
-    export default ParticlesBackground;
+export default ParticlesBackground;
+

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "article1",
+    "title": "Article Title 1",
+    "summary": "Summary of Article 1...",
+    "imageUrl": "/images/jan-26/art1.png",
+    "body": "Full body of Article 1",
+    "additionalImages": ["/images/jan-26/art1.png", "/images/jan-26/art1.png"]
+  },
+  {
+    "id": "article2",
+    "title": "Article Title 2",
+    "summary": "Summary of Article 2...",
+    "imageUrl": "/images/jan-26/art2.png",
+    "body": "Full body of Article 2",
+    "additionalImages": ["/images/jan-26/art2.png", "/images/jan-26/art1.png"]
+  },
+  {
+    "id": "article3",
+    "title": "Article Title 3",
+    "summary": "Summary of Article 3...",
+    "imageUrl": "/images/jan-26/art3.png",
+    "body": "Full body of Article 3",
+    "additionalImages": ["/images/jan-26/art3.png", "/images/jan-26/art1.png"]
+  }
+]
+

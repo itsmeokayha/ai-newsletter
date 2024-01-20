@@ -1,47 +1,58 @@
-// MainContent.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ArticleCard from './ArticleCard';
-import ParticlesBackground from './ParticlesBackground';
+import Archive from './Archive'; // Import Archive component
 import './MainContent.css';
 
-
 function MainContent() {
+    const [articles, setArticles] = useState([]);
+    const [archivedArticles, setArchivedArticles] = useState([]);
     const [expandedArticleId, setExpandedArticleId] = useState(null);
 
-    const particlesOptions = {
-        particles: {
-            number: {
-                value: 10
-            },
-            size: {
-                value: 3
-            }
-        }
-    };
+    useEffect(() => {
+        fetch('http://localhost:3001/articles')
+            .then(response => response.json())
+            .then(data => {
+                const currentArticles = [];
+                const archive = [];
 
-    const articles = [
-        { id: 1, title: 'Article 1', summary: 'Summary of Article 1', imageUrl: 'images/jan-26/art1.png', body: 'Full body of Article 1', additionalImages: ['images/jan-26/more1.png', 'images/jan-26/more2.png'] },
-        { id: 2, title: 'Article 2', summary: 'Summary of Article 2', imageUrl: 'images/jan-26/art2.png', body: 'Full body of Article 2', additionalImages: ['images/jan-26/more1.png', 'images/jan-26/more2.png'] },
-        { id: 3, title: 'Article 3', summary: 'Summary of Article 3', imageUrl: 'images/jan-26/art3.png', body: 'Full body of Article 3', additionalImages: ['images/jan-26/more1.png', 'images/jan-26/more2.png'] }
-    ];
+                const archiveThreshold = 14; // days, adjust as needed
+
+                const currentDate = new Date();
+                data.forEach(article => {
+                    const articleDate = new Date(article.date); // Assuming 'date' field exists
+                    const timeDiff = currentDate - articleDate;
+                    const daysSincePublished = timeDiff / (1000 * 3600 * 24);
+
+                    if (daysSincePublished > archiveThreshold) {
+                        archive.push(article);
+                    } else {
+                        currentArticles.push(article);
+                    }
+                });
+
+                setArticles(currentArticles);
+                setArchivedArticles(archive);
+            })
+            .catch(error => console.error('Error loading articles:', error));
+    }, []);
 
     const handleArticleClick = (articleId) => {
-            setExpandedArticleId(expandedArticleId === articleId ? null : articleId);
-        };
+        setExpandedArticleId(expandedArticleId === articleId ? null : articleId);
+    };
 
-        return (
-            <div className="main-content">
-                <ParticlesBackground />
-                {articles.map(article => (
-                    <ArticleCard
-                        key={article.id}
-                        article={article}
-                        onArticleClick={() => handleArticleClick(article.id)}
-                        isExpanded={expandedArticleId === article.id}
-                    />
-                ))}
-            </div>
-        );
-    }
+    return (
+        <div className="main-content">
+            {articles.map(article => (
+                <ArticleCard
+                    key={article.id}
+                    article={article}
+                    onArticleClick={() => handleArticleClick(article.id)}
+                    isExpanded={expandedArticleId === article.id}
+                />
+            ))}
+            <Archive archivedArticles={archivedArticles} />
+        </div>
+    );
+}
 
-    export default MainContent;
+export default MainContent;

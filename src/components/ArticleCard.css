@@ -1,4 +1,8 @@
 .article-card {
+  margin: 20px auto; /* Space around cards */
+  width: 80%; /* Adjust this to control the card width */
+  max-width: 900px; /* Maximum width */
+  margin-bottom: 20px;
   border: 1px solid #e2e8f0; /* Light border for definition */
   border-radius: 0.5rem; /* Slightly rounded corners */
   overflow: hidden; /* Ensures content respects border radius */
@@ -6,7 +10,7 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), /* Subtle shadow for depth */
               0 2px 4px -1px rgba(0, 0, 0, 0.06);
   cursor: pointer;
-  margin: 0 auto;
+
   background: #fff; /* Assuming a light theme, adjust as necessary */
 }
 
@@ -40,13 +44,13 @@
 }
 
 .article-card.expanded .article-content {
-  max-height: 2000px; /* Arbitrary large max-height for expansion */
+  max-height: none;
 }
 
-/* Styles for additional images if needed */
-.additional-image {
-  width: 100%;
-  margin-top: 20px;
-  display: block; /* Ensures that images are not inline */
-}
 
+.article-image, .additional-image {
+  width: 100%; /* Full width of the card */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the area, can be adjusted to 'contain' if needed */
+  object-position: center; /* Center the image */
+}
