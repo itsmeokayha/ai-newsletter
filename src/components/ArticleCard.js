@@ -1,20 +1,32 @@
+import React, { useState } from 'react';
+import './ArticleCard.css';
 
-import React from 'react';
+const ArticleCard = ({ article }) => {
+  const [isExpanded, setExpanded] = useState(false);
 
-function ArticleCard({ title, summary, imageUrl, altText }) {
-    return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg m-2 
-                       sm:max-w-md md:max-w-lg lg:max-w-xl
-                       transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-            <img className="w-full" src={imageUrl} alt={altText ? altText : title} />
-            <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">{title}</div>
-                <p className="text-gray-700 text-base">
-                    {summary}
-                </p>
-            </div>
-        </div>
-    );
-}
+  const toggleExpansion = () => {
+    setExpanded(!isExpanded);
+  };
+
+  return (
+    <div className={`article-card ${isExpanded ? 'expanded' : ''}`} onClick={toggleExpansion}>
+      <img src={article.imageUrl} alt={article.title} className="article-image" />
+      <div className="article-content">
+        <h2>{article.title}</h2>
+        {isExpanded && (
+          <div>
+            <p>{article.body}</p>
+            {article.additionalImages.map((image, index) => (
+              <img key={index} src={image} alt={`Additional ${index}`} className="additional-image" />
+            ))}
+            {/* Include other additional content as needed */}
+          </div>
+        )}
+        {!isExpanded && <p>{article.summary}</p>}
+      </div>
+    </div>
+  );
+};
 
 export default ArticleCard;
+

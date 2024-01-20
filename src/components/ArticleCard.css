@@ -1,0 +1,52 @@
+.article-card {
+  border: 1px solid #e2e8f0; /* Light border for definition */
+  border-radius: 0.5rem; /* Slightly rounded corners */
+  overflow: hidden; /* Ensures content respects border radius */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), /* Subtle shadow for depth */
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  margin: 0 auto;
+  background: #fff; /* Assuming a light theme, adjust as necessary */
+}
+
+.article-card:hover {
+  transform: translateY(-5px); /* Slight raise effect on hover */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Increased shadow on hover */
+}
+
+.article-card.expanded {
+  max-height: none; /* Remove max-height restriction when expanded */
+  padding: 20px;
+  cursor: default;
+}
+
+.article-image {
+  width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease;
+}
+
+.article-card.expanded .article-image {
+  opacity: 1; /* Keep the image fully visible when expanded */
+}
+
+.article-content {
+  padding: 20px;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  max-height: 0; /* Start with no height */
+  overflow: hidden;
+}
+
+.article-card.expanded .article-content {
+  max-height: 2000px; /* Arbitrary large max-height for expansion */
+}
+
+/* Styles for additional images if needed */
+.additional-image {
+  width: 100%;
+  margin-top: 20px;
+  display: block; /* Ensures that images are not inline */
+}
+

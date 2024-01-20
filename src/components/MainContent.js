@@ -1,31 +1,47 @@
+// MainContent.js
+import React, { useState } from 'react';
+import ArticleCard from './ArticleCard';
+import ParticlesBackground from './ParticlesBackground';
+import './MainContent.css';
 
-import React from 'react';
-const ArticleCard = React.lazy(() => import('./ArticleCard'));
 
 function MainContent() {
-    // Example: Placeholder for dynamic article data
+    const [expandedArticleId, setExpandedArticleId] = useState(null);
+
+    const particlesOptions = {
+        particles: {
+            number: {
+                value: 10
+            },
+            size: {
+                value: 3
+            }
+        }
+    };
+
     const articles = [
-        { title: 'Article 1', summary: 'Summary of Article 1', imageUrl: 'path/to/image1.jpg' },
-        // ... additional articles ...
+        { id: 1, title: 'Article 1', summary: 'Summary of Article 1', imageUrl: 'images/jan-26/art1.png', body: 'Full body of Article 1', additionalImages: ['images/jan-26/more1.png', 'images/jan-26/more2.png'] },
+        { id: 2, title: 'Article 2', summary: 'Summary of Article 2', imageUrl: 'images/jan-26/art2.png', body: 'Full body of Article 2', additionalImages: ['images/jan-26/more1.png', 'images/jan-26/more2.png'] },
+        { id: 3, title: 'Article 3', summary: 'Summary of Article 3', imageUrl: 'images/jan-26/art3.png', body: 'Full body of Article 3', additionalImages: ['images/jan-26/more1.png', 'images/jan-26/more2.png'] }
     ];
 
-    // Example: Placeholder for image optimization
-    const optimizedImageUrl = imageUrl => imageUrl.replace('/original/', '/optimized/');
+    const handleArticleClick = (articleId) => {
+            setExpandedArticleId(expandedArticleId === articleId ? null : articleId);
+        };
 
-    return (
-        <main className="p-4">
-            <React.Suspense fallback={<div>Loading...</div>}>
-                {articles.map((article, index) => (
+        return (
+            <div className="main-content">
+                <ParticlesBackground />
+                {articles.map(article => (
                     <ArticleCard
-                        key={index}
-                        title={article.title}
-                        summary={article.summary}
-                        imageUrl={optimizedImageUrl(article.imageUrl)}
+                        key={article.id}
+                        article={article}
+                        onArticleClick={() => handleArticleClick(article.id)}
+                        isExpanded={expandedArticleId === article.id}
                     />
                 ))}
-            </React.Suspense>
-        </main>
-    );
-}
+            </div>
+        );
+    }
 
-export default MainContent;
+    export default MainContent;

@@ -1,30 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
+import Switch from '@mui/material/Switch'; // Material-UI Switch for a modern toggle
 
 function Header() {
-    const handleScroll = () => {
-        // Logic to highlight the active section in the navigation bar
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    const scrollToSection = (sectionId) => {
-        document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
-    };
+    const [nightMode, setNightMode] = useState(false);
 
     return (
-        <header className="bg-blue-500 text-white text-center p-4">
-            <h1>AI News Hub</h1>
+        <header className={`header ${nightMode ? 'night-mode' : ''}`}>
+            <div className="logo">
+                <h1>Fin-Tech News</h1>
+            </div>
             <nav>
-                <a href="#news" className="hover:underline" onClick={() => scrollToSection('#news')}>News</a>
-                <a href="#feedback" className="hover:underline ml-4" onClick={() => scrollToSection('#feedback')}>Feedback</a>
+                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/archive" className="nav-link">Archive</Link>
+                {/* Additional links can be added here */}
             </nav>
+            <div className="mode-switch">
+                <Switch
+                    checked={nightMode}
+                    onChange={() => setNightMode(!nightMode)}
+                    color="default"
+                />
+                <span>{nightMode ? 'Night Mode' : 'Day Mode'}</span>
+            </div>
         </header>
     );
 }
 
 export default Header;
+

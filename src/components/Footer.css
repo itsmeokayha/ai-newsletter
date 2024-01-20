@@ -1,0 +1,35 @@
+.footer {
+    background-color: #1a202c; /* Dark background for a sleek look */
+    padding: 2rem;
+    color: #cbd5e0; /* Light text for contrast */
+    text-align: center;
+}
+
+.feedback-form {
+    max-width: 600px; /* Limiting width for better aesthetics */
+    margin: auto; /* Centering the form */
+    padding: 1rem;
+    background-color: #2d3748; /* Slightly lighter background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.feedback-form .MuiTextField-root {
+    margin-bottom: 1rem; /* Spacing between form elements */
+}
+
+.submit-button {
+    background-color: #4c51bf; /* Vibrant blue for the button */
+    color: white;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #667eea; /* Lighter blue on hover */
+}
+
+.feedback-thankyou {
+    color: #68d391; /* Pleasant green for thank you message */
+    font-weight: bold;
+}

@@ -1,0 +1,47 @@
+.header {
+    background-color: #1a202c; /* Dark background for a sleek look */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    max-height: 60px; /* Ensures header does not take more vertical space than necessary */
+}
+
+
+.logo h1 {
+    font-size: 1.8rem;
+    color: #68d391; /* Bright color for the logo */
+}
+
+.nav-link {
+    color: #cbd5e0;
+    margin: 0 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #4c51bf; /* Interactive color change on hover */
+}
+
+.mode-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Styling for night mode */
+.night-mode {
+    background-color: #2d3748; /* Slightly lighter background for night mode */
+}
+
+/* Optionally, add media query for responsiveness */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+    .nav-link {
+        margin: 0.5rem 0;
+    }
+}
