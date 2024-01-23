@@ -1,12 +1,13 @@
 [
   {
     "id": "article1",
-    "title": "Article Title 1",
-    "summary": "Summary of Article 1...",
+    "title": "Evolving Landscape of Generative AI",
+    "summary": "Exploring Runaway AI's Gen-2 Model and VideoGPT.",
     "imageUrl": "/images/jan-26/art1.png",
-    "body": "Full body of Article 1",
-    "additionalImages": ["/images/jan-26/art1.png", "/images/jan-26/art1.png"]
+    "body": "# Evolving Landscape of Generative AI\n\n**Runaway AI's Gen-2 Model**\n\nRunaway AI's Gen-2 model represents a significant leap in AI video technology...\n\n*Enhanced Realism*: Generates lifelike videos...\n\n[Learn More](https://example.com)\n\n![Gen-2 Model Image](/images/jan-26/gen2-model.png)",
+    "additionalImages": ["/images/jan-26/art1.png"]
   },
+
   {
     "id": "article2",
     "title": "Article Title 2",
@@ -24,4 +25,5 @@
     "additionalImages": ["/images/jan-26/art3.png", "/images/jan-26/art1.png"]
   }
 ]
+
 

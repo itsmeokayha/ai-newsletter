@@ -10,7 +10,7 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), /* Subtle shadow for depth */
               0 2px 4px -1px rgba(0, 0, 0, 0.06);
   cursor: pointer;
-
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional font */
   background: #fff; /* Assuming a light theme, adjust as necessary */
 }
 
@@ -43,6 +43,15 @@
   overflow: hidden;
 }
 
+.article-content a {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Style for links */
+}
+
+.article-content a:hover {
+  text-decoration: underline; /* Hover effect for links */
+}
+
 .article-card.expanded .article-content {
   max-height: none;
 }
@@ -53,4 +62,17 @@
   height: auto; /* Maintain aspect ratio */
   object-fit: cover; /* Cover the area, can be adjusted to 'contain' if needed */
   object-position: center; /* Center the image */
+  margin-bottom: 15px; /* Spacing after images */
+}
+
+.article-card h2 {
+  font-size: 24px; /* Larger, bold title */
+  font-weight: bold;
+  margin-bottom: 10px; /* Spacing after the title */
+}
+
+.article-content p, .article-content li, .article-content h3 {
+  font-size: 16px; /* Readable text size */
+  line-height: 1.6; /* Spacing between lines */
+  margin-bottom: 15px; /* Spacing between paragraphs */
 }

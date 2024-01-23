@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import './ArticleCard.css';
 
 const ArticleCard = ({ article }) => {
@@ -15,11 +16,10 @@ const ArticleCard = ({ article }) => {
         <h2>{article.title}</h2>
         {isExpanded && (
           <div>
-            <p>{article.body}</p>
+            <ReactMarkdown>{article.body}</ReactMarkdown>
             {article.additionalImages.map((image, index) => (
               <img key={index} src={image} alt={`Additional ${index}`} className="additional-image" />
             ))}
-            {/* Include other additional content as needed */}
           </div>
         )}
         {!isExpanded && <p>{article.summary}</p>}
@@ -29,4 +29,5 @@ const ArticleCard = ({ article }) => {
 };
 
 export default ArticleCard;
+
 
