@@ -9,7 +9,7 @@ function MainContent() {
     const [expandedArticleId, setExpandedArticleId] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3001/articles')
+        fetch('https://secure-temple-27333-754a39a55c5f.herokuapp.com/')
             .then(response => response.json())
             .then(data => {
                 const currentArticles = [];
