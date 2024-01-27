@@ -4,7 +4,7 @@ import './MainContent.css';
 
 function MainContent() {
     const [articles, setArticles] = useState([]);
-    const [archivedArticles, setArchivedArticles] = useState([]);
+//    const [archivedArticles, setArchivedArticles] = useState([]);
     const [expandedArticleId, setExpandedArticleId] = useState(null);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ function MainContent() {
             .then(response => response.json())
             .then(data => {
                 const currentArticles = [];
-                const archive = [];
+     //           const archive = [];
 
                 const archiveThreshold = 14; // days, adjust as needed
 
@@ -24,13 +24,13 @@ function MainContent() {
 
                     if (daysSincePublished > archiveThreshold) {
                         archive.push(article);
-                    } else {
+                    }/* else {
                         currentArticles.push(article);
-                    }
+                    } */ // Commented out
                 });
 
                 setArticles(currentArticles);
-                setArchivedArticles(archive); // Keep this to manage archived articles
+         //       setArchivedArticles(archive); // Keep this to manage archived articles
             })
             .catch(error => console.error('Error loading articles:', error));
     }, []);
