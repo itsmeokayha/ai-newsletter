@@ -50,9 +50,9 @@ function MainContent() {
                     isExpanded={expandedArticleId === article.id}
                 />
             ))}
+            <Archive archivedArticles={archivedArticles} />
         </div>
     );
 }
-
 
 export default MainContent;
