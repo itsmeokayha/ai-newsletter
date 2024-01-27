@@ -1,29 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import Switch from '@mui/material/Switch'; // Material-UI Switch for a modern toggle
 
 function Header() {
-    const [nightMode, setNightMode] = useState(false);
-
     return (
-        <header className={`header ${nightMode ? 'night-mode' : ''}`}>
+        <header className="header">
             <div className="logo">
-                <h1>Fin-Tech News</h1>
+                {/* 3D text effect for the title */}
+                <h1 className="title-3d">AI-Pocalypse Now</h1>
             </div>
             <nav>
                 <Link to="/" className="nav-link">Home</Link>
                 <Link to="/archive" className="nav-link">Archive</Link>
-                {/* Additional links can be added here */}
+                {/* Placeholder for future search feature */}
+                <div className="search-placeholder">Search...</div>
             </nav>
-            <div className="mode-switch">
-                <Switch
-                    checked={nightMode}
-                    onChange={() => setNightMode(!nightMode)}
-                    color="default"
-                />
-                <span>{nightMode ? 'Night Mode' : 'Day Mode'}</span>
-            </div>
         </header>
     );
 }

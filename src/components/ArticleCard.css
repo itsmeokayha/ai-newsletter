@@ -1,78 +1,200 @@
 .article-card {
-  margin: 20px auto; /* Space around cards */
-  width: 80%; /* Adjust this to control the card width */
-  max-width: 900px; /* Maximum width */
-  margin-bottom: 20px;
-  border: 1px solid #e2e8f0; /* Light border for definition */
-  border-radius: 0.5rem; /* Slightly rounded corners */
-  overflow: hidden; /* Ensures content respects border radius */
-  transition: all 0.3s ease; /* Smooth transition for all properties */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), /* Subtle shadow for depth */
-              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 30px auto;
+  width: 85%;
+  max-width: 1200px;
+  min-height: 450px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, max-height 0.5s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional font */
-  background: #fff; /* Assuming a light theme, adjust as necessary */
+  font-family: 'Roboto', sans-serif;
+  background: #161616;
+  color: #ffffff;
+}
+
+.article-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #00F260 0%, #0575E6 100%);
+  clip-path: circle(250px at 80% -20%);
+  transition: clip-path 0.6s ease, background 0.4s ease;
+}
+
+.article-card:hover:before {
+  clip-path: circle(450px at 80% 10%);
+  background: linear-gradient(45deg, #e14eca 0%, #6A3093 100%);
 }
 
 .article-card:hover {
-  transform: translateY(-5px); /* Slight raise effect on hover */
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-              0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Increased shadow on hover */
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
 .article-card.expanded {
-  max-height: none; /* Remove max-height restriction when expanded */
-  padding: 20px;
+  max-height: 100%;
+  padding: 35px;
   cursor: default;
+  transform: translateY(0);
+
 }
 
 .article-image {
   width: 100%;
-  height: auto;
-  transition: opacity 0.3s ease;
+  height: 800px; /* Increased height for a taller image container */
+  object-fit: cover;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.7);
+  transition: height 0.3s ease;
 }
 
 .article-card.expanded .article-image {
-  opacity: 1; /* Keep the image fully visible when expanded */
+  opacity: 0.8;
+  height: 360px; /* Slightly reduced for expanded view */
 }
 
 .article-content {
-  padding: 20px;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  max-height: 0; /* Start with no height */
+  padding: 35px;
+  max-height: 100%;
   overflow: hidden;
-}
+  transition: max-height 0.6s ease;
+  position: relative;
+  z-index: 10;
+  transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
 
-.article-content a {
-  color: #007bff; /* Link color */
-  text-decoration: none; /* Style for links */
-}
-
-.article-content a:hover {
-  text-decoration: underline; /* Hover effect for links */
 }
 
 .article-card.expanded .article-content {
-  max-height: none;
+  max-height: 100%;
+
 }
 
-
-.article-image, .additional-image {
-  width: 100%; /* Full width of the card */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Cover the area, can be adjusted to 'contain' if needed */
-  object-position: center; /* Center the image */
-  margin-bottom: 15px; /* Spacing after images */
+.article-content a {
+  color: #00BFFF;
+  text-decoration: none;
 }
 
-.article-card h2 {
-  font-size: 24px; /* Larger, bold title */
-  font-weight: bold;
-  margin-bottom: 10px; /* Spacing after the title */
+.article-content a:hover {
+  text-decoration: underline;
+}
+
+.article-card h1, .article-card h2 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-shadow: 4px 4px 7px rgba(0, 0, 0, 0.7);
+}
+
+.article-card .article-summary {
+  font-size: 19px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #E0E0E0;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .article-content p, .article-content li, .article-content h3 {
-  font-size: 16px; /* Readable text size */
-  line-height: 1.6; /* Spacing between lines */
-  margin-bottom: 15px; /* Spacing between paragraphs */
+  font-size: 18px;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.article-content ul, .article-content ol {
+  padding-left: 40px;
+  list-style-type: disc;
+  color: #E0E0E0;
+}
+
+.article-content blockquote {
+  padding: 20px 40px;
+  margin: 30px 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-left: 8px solid #00BFFF;
+  font-style: italic;
+  color: #ddd;
+}
+
+.article-content code {
+  font-family: 'Courier New', monospace;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 25px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .article-card {
+    width: 90%;
+    min-height: 400px;
+  }
+  .article-card h1, .article-card h2 {
+    font-size: 28px;
+  }
+  .article-card .article-summary {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    width: 95%;
+    min-height: 380px;
+  }
+  .article-card h1, .article-card h2 {
+    font-size: 26px;
+  }
+  .article-card .article-summary {
+    font-size: 16px;
+  }
+  .article-image {
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-card {
+    min-height: 360px;
+  }
+  .article-card h1, .article-card h2 {
+    font-size: 24px;
+  }
+  .article-card .article-summary {
+    font-size: 15px;
+  }
+  .article-image {
+    height: 250px;
+  }
+}
+
+.close-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 30px;
+}
+
+.close-button:hover {
+  background-color: #e03e00;
 }

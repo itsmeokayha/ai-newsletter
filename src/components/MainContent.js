@@ -9,7 +9,7 @@ function MainContent() {
     const [expandedArticleId, setExpandedArticleId] = useState(null);
 
     useEffect(() => {
-        fetch('https://secure-temple-27333-754a39a55c5f.herokuapp.com/articles')
+        fetch('/articles.json')
             .then(response => response.json())
             .then(data => {
                 const currentArticles = [];
@@ -50,9 +50,9 @@ function MainContent() {
                     isExpanded={expandedArticleId === article.id}
                 />
             ))}
-            <Archive archivedArticles={archivedArticles} />
         </div>
     );
 }
+
 
 export default MainContent;
