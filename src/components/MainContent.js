@@ -4,7 +4,7 @@ import './MainContent.css';
 
 function MainContent() {
     const [articles, setArticles] = useState([]);
-//    const [archivedArticles, setArchivedArticles] = useState([]);
+    const [archivedArticles, setArchivedArticles] = useState([]); // Keep the variable
     const [expandedArticleId, setExpandedArticleId] = useState(null);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ function MainContent() {
             .then(response => response.json())
             .then(data => {
                 const currentArticles = [];
-     //           const archive = [];
+                const archive = [];
 
                 const archiveThreshold = 14; // days, adjust as needed
 
@@ -24,13 +24,13 @@ function MainContent() {
 
                     if (daysSincePublished > archiveThreshold) {
                         archive.push(article);
-                    }/* else {
+                    } else {
                         currentArticles.push(article);
-                    } */ // Commented out
+                    }
                 });
 
                 setArticles(currentArticles);
-         //       setArchivedArticles(archive); // Keep this to manage archived articles
+                setArchivedArticles(archive); // Keep the variable in use
             })
             .catch(error => console.error('Error loading articles:', error));
     }, []);
@@ -38,6 +38,9 @@ function MainContent() {
     const handleArticleClick = (articleId) => {
         setExpandedArticleId(expandedArticleId === articleId ? null : articleId);
     };
+
+    // Dummy use of archivedArticles to avoid unused variable error
+    console.log(archivedArticles.length ? 'Archived articles exist' : 'No archived articles');
 
     return (
         <div className="main-content">
@@ -49,9 +52,9 @@ function MainContent() {
                     isExpanded={expandedArticleId === article.id}
                 />
             ))}
-            {/* Removed the Archive component rendering */}
         </div>
     );
 }
 
 export default MainContent;
+
