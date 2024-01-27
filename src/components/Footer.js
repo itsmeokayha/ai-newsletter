@@ -13,20 +13,19 @@ function Footer() {
             feedback: Yup.string().required('Feedback is required')
         }),
         onSubmit: (values, { resetForm, setSubmitting }) => {
-            // Replace with the actual URL of your server
-            fetch('http://localhost:3001/submit-feedback', {
+            fetch('/.netlify/functions/submitFeedback', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ feedback: values.feedback }),
             })
-            .then(response => response.json()) // Assuming your server responds with JSON
+            .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
                 setFeedbackSubmitted(true);
-                setSubmitting(false); // Finish the submitting state
-                resetForm(); // Reset the form only after successful submission
+                setSubmitting(false);
+                resetForm();
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -64,4 +63,3 @@ function Footer() {
 }
 
 export default Footer;
-

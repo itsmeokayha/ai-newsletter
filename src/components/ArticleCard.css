@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 30px auto;
-  width: 85%;
-  max-width: 1200px;
+  margin: 20px auto;
+  width: 50%;
+  max-width: 100px;
+  min-width: 300px; /* Min width for smaller devices */
   min-height: 450px;
   border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 30px;
@@ -24,19 +25,21 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #00F260 0%, #0575E6 100%);
-  clip-path: circle(250px at 80% -20%);
+  background: linear-gradient(135deg, #1c2331 0%, #283048 100%); /* Darker gradient for a sleek look */
+  clip-path: circle(150px at 80% -10%); /* Smaller initial circle size */
   transition: clip-path 0.6s ease, background 0.4s ease;
 }
 
 .article-card:hover:before {
-  clip-path: circle(450px at 80% 10%);
-  background: linear-gradient(45deg, #e14eca 0%, #6A3093 100%);
+  clip-path: circle(300px at 80% 0%); /* Adjusted hover circle size */
+  background: linear-gradient(135deg, #0f1624 0%, #1a2235 100%); /* Dark gradient on hover */
 }
+
+
 
 .article-card:hover {
   transform: translateY(-12px) scale(1.05);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); /* Enhanced shadow for depth */
 }
 
 .article-card.expanded {
@@ -48,11 +51,10 @@
 }
 
 .article-image {
-  width: 100%;
-  height: 800px; /* Increased height for a taller image container */
-  object-fit: cover;
-  border-bottom: 4px solid rgba(255, 255, 255, 0.7);
-  transition: height 0.3s ease;
+    width: 100%; /* Full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the area without stretching the image */
+    max-height: 800px; /* Maximum height for large images */
 }
 
 .article-card.expanded .article-image {
@@ -150,19 +152,21 @@
   }
 }
 
+
 @media (max-width: 768px) {
   .article-card {
-    width: 95%;
-    min-height: 380px;
+    width: 95%; /* Wider on small screens */
+    min-height: auto; /* Auto height for better fit */
+    padding: 15px; /* Reduced padding */
+    /* Adjust other properties as needed */
   }
+  .article-card .article-summary,
   .article-card h1, .article-card h2 {
-    font-size: 26px;
-  }
-  .article-card .article-summary {
-    font-size: 16px;
+    font-size: smaller; /* Adjust font size */
+    /* Adjust other text styles as needed */
   }
   .article-image {
-    height: 280px;
+    height: auto; /* Auto height for images */
   }
 }
 
@@ -198,3 +202,64 @@
 .close-button:hover {
   background-color: #e03e00;
 }
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .article-card {
+        max-width: 90%; /* Adjust max width */
+    }
+    .article-card h1, .article-card h2 {
+        font-size: 28px; /* Adjust font size */
+    }
+    .article-image {
+        height: 500px; /* Adjust height */
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .article-card {
+        max-width: 85%; /* More constrained width for readability */
+        min-height: 450px; /* Consistent height */
+    }
+    .article-card h1, .article-card h2 {
+        font-size: 30px; /* Larger font size */
+    }
+    .article-image {
+        height: 600px; /* Larger image for desktops */
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .article-card {
+        max-width: 80%; /* Ideal reading width */
+    }
+    .article-card h1, .article-card h2 {
+        font-size: 34px; /* Largest font size for titles */
+    }
+}
+
+/* Ultra large devices (TVs, 1600px and up) */
+@media (min-width: 1600px) {
+    .article-card {
+        max-width: 75%; /* Further constrain for very large screens */
+    }
+}
+
+/* Smaller devices adjustments */
+@media (max-width: 600px) {
+    .article-card {
+        /* Adjustments for smaller devices */
+        padding: 15px;
+        min-width: auto; /* Allow natural width on very small devices */
+    }
+    .article-card .article-summary {
+        font-size: 16px; /* Smaller text for readability */
+    }
+    .article-image {
+            max-height: 500px; /* Adjust height for smaller screens */
+        }
+}
+

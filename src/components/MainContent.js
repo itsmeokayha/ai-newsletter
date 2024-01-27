@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ArticleCard from './ArticleCard';
-import Archive from './Archive'; // Import Archive component
 import './MainContent.css';
 
 function MainContent() {
@@ -19,7 +18,7 @@ function MainContent() {
 
                 const currentDate = new Date();
                 data.forEach(article => {
-                    const articleDate = new Date(article.date); // Assuming 'date' field exists
+                    const articleDate = new Date(article.date);
                     const timeDiff = currentDate - articleDate;
                     const daysSincePublished = timeDiff / (1000 * 3600 * 24);
 
@@ -31,7 +30,7 @@ function MainContent() {
                 });
 
                 setArticles(currentArticles);
-                setArchivedArticles(archive);
+                setArchivedArticles(archive); // Keep this to manage archived articles
             })
             .catch(error => console.error('Error loading articles:', error));
     }, []);
@@ -50,7 +49,7 @@ function MainContent() {
                     isExpanded={expandedArticleId === article.id}
                 />
             ))}
-            <Archive archivedArticles={archivedArticles} />
+            {/* Removed the Archive component rendering */}
         </div>
     );
 }

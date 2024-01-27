@@ -1,16 +1,17 @@
 /* MainContent.css */
+/* MainContent.css */
 .main-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-      align-items: center;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
     position: relative;
-    overflow: visible; /* Changed to visible to ensure particles are not clipped */
-    background-color: rgba(26, 32, 44, 0.6); /* Adjusted background for better particle visibility */
+    overflow: visible; /* Ensure particle visibility */
+    background-color: rgba(26, 32, 44, 0.6); /* Background color */
 }
 
 #particles-js {
@@ -19,13 +20,20 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Ensures particles are behind the content */
+    z-index: -1; /* Particle layer */
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .main-content {
-        flex-direction: column;
-        align-items: center;
+        gap: 15px; /* Smaller gap for smaller screens */
+        padding: 15px; /* Smaller padding for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        gap: 10px; /* Even smaller gap for very small screens */
     }
 }
 
