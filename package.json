@@ -16,6 +16,7 @@
     "autoprefixer": "^10.4.17",
     "cors": "^2.8.5",
     "formik": "^2.4.5",
+    "marked": "^12.0.0",
     "node-fetch": "^3.3.2",
     "postcss": "^8.4.33",
     "react": "^18.2.0",
@@ -54,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }

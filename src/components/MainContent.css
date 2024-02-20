@@ -1,5 +1,4 @@
-/* MainContent.css */
-/* MainContent.css */
+/* MainContent.css - Adjusted for Increased Transparency */
 .main-content {
     flex-grow: 1;
     display: flex;
@@ -10,8 +9,16 @@
     gap: 20px;
     padding: 20px;
     position: relative;
-    overflow: visible; /* Ensure particle visibility */
-    background-color: rgba(26, 32, 44, 0.6); /* Background color */
+    overflow: visible;
+    background: linear-gradient(135deg, rgba(2, 12, 27, 0.8), rgba(3, 27, 47, 0.8), rgba(4, 39, 56, 0.8));
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2);
+    margin-top: 20px; /* Margin adjustments */
+    margin-bottom: 20px; /* Margin adjustments */
+    z-index: 1; /* Ensure content is above the particles */
 }
 
 #particles-js {
@@ -20,24 +27,57 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Particle layer */
+    z-index: 0; /* Ensure particles are behind the content */
+    background: linear-gradient(135deg, #021b1f, #03272f, #042938);
+    opacity: 0.9; /* Optimal visibility */
 }
 
-/* Responsive adjustments */
+.article-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    transition: all 0.5s ease; /* Smooth transition for interactions */
+    will-change: transform, box-shadow;
+}
+
+.article-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Responsive and Animation Adjustments */
 @media (max-width: 768px) {
     .main-content {
-        gap: 15px; /* Smaller gap for smaller screens */
-        padding: 15px; /* Smaller padding for mobile */
+        gap: 15px;
+        padding: 15px;
     }
 }
 
 @media (max-width: 480px) {
     .main-content {
-        gap: 10px; /* Even smaller gap for very small screens */
+        gap: 10px;
     }
 }
 
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
 
+.loading-animation {
+    animation: shimmer 3s infinite linear; /* Smooth and visually appealing loading animation */
+}
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-
+.article-card {
+    animation: fadeIn 2s ease-out; /* Subtle and smooth fade-in for articles */
+}

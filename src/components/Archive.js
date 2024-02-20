@@ -1,22 +1,35 @@
-import React from 'react';
-import './Archive.css'; // Assuming you have a corresponding CSS file
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './Archive.css';
 
-const Archive = ({ archivedArticles }) => {
+function Archive() {
+    const [issues, setIssues] = useState([]);
+
+    useEffect(() => {
+        fetch('/articles.json')
+            .then(response => response.json())
+            .then(data => {
+                setIssues(data);
+            })
+            .catch(error => console.error('Error loading issues:', error));
+    }, []);
+
     return (
         <div className="archive-container">
-            <h2 className="archive-title">Archived Articles</h2>
-            <ul className="archive-list">
-                {archivedArticles.map((article, index) => (
-                    <li key={article.id} className="archive-item">
-                        <h3 className="archive-article-title">{article.title}</h3>
-                        <p className="archive-article-summary">{article.summary}</p>
-                        <span className="archive-article-date">{new Date(article.date).toLocaleDateString()}</span>
-                        {/* Implement a click handler if needed */}
-                    </li>
+            <h2 className="archive-title">Issue Archive</h2>
+            <div className="issues-column">
+                {issues.map((issue, index) => (
+                    <Link to={`/archive/${issue.issue}`} key={index} className="archive-item-link">
+                        <div className="archive-item">
+                            <h3 className="archive-issue-title">Issue: {issue.issue}</h3>
+                            {/* Display date if available */}
+                            {/* <p className="archive-issue-date">Date: {issue.date}</p> */}
+                        </div>
+                    </Link>
                 ))}
-            </ul>
+            </div>
         </div>
     );
-};
+}
 
 export default Archive;
