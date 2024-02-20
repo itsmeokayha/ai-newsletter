@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import ArticleCard from './ArticleCard'; // If you still want to use the styling from ArticleCard
+//import ArticleCard from './ArticleCard'; // If you still want to use the styling from ArticleCard
 
 function IssuePage() {
   const { issueId } = useParams();
